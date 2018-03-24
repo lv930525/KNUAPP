@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="tw.edu.knu.app" version="1.5.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="AppVersion">
+        <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion" />
+    </feature>
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/icon/android/drawable-ldpi/ic_launcher.png" />
+    <icon density="mdpi" src="res/icon/android/drawable-mdpi/ic_launcher.png" />
+    <icon density="hdpi" src="res/icon/android/drawable-hdpi/ic_launcher.png" />
+    <icon density="xhdpi" src="res/icon/android/drawable-xhdpi/ic_launcher.png" />
+    <icon density="xxhdpi" src="res/icon/android/drawable-xxhdpi/ic_launcher.png" />
+    <icon density="xxxhdpi" src="res/icon/android/drawable-xxxhdpi/ic_launcher.png" />
+    <splash src="res/slpash/android/Loading.png" />
+    <name>開南大學</name>
+    <description>
+        KAINAN UNIVERSITY
+    </description>
+    <author email="itc_app@mail.knu.edu.tw" href="http://itc.knu.edu.tw">
+        KAINAN UNIVERSITY ITC
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="Orientation" value="portrait" />
+    <icon src="res/icon/android/drawable-xxxhdpi/ic_launcher.png" />
+</widget>

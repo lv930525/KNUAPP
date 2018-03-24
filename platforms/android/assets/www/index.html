@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' knu.edu.tw;connect-src *; style-src * 'unsafe-inline';img-src *; script-src * 'unsafe-inline' 'unsafe-eval';">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="css/slick.css">
+		
+        <title>開南大學</title>
+    </head>
+    <body style="background:url(img/Background.jpg) no-repeat center top;background-size:cover;overflow-x:hidden;">
+		<!--目錄-->
+		<div data-role="page" id="menu" style="background:transparent;">
+			<div role="main" class="ui-content" id="menu-content">
+				<div>
+					<img src="./img/Title.png" style="width:100%;padding-left: 10%;padding-right: 15%;margin-top: -15px;"/>
+				</div>
+				<div id="banner" style="min-height:100px;">
+				</div>
+				<div class="ui-grid-c" style="">
+				  <div class="ui-block-a"><a href="#news" id="news-button"><img class="img-responsive" src="./img/icon/menu/news.png" /></a></div>
+				  <div class="ui-block-b"><a href="#event" id="event-button"><img class="img-responsive" src="./img/icon/menu/event.png" /></a></div>
+				  <div class="ui-block-c"><a href="https://www.facebook.com/go2knu"><img class="img-responsive" src="./img/icon/menu/FB.png" /></a></div>
+				  <div class="ui-block-d"><a href="#traffic"><img class="img-responsive" src="./img/icon/menu/traffic.png" /></a></div>
+				</div>
+				<div class="ui-grid-c" style="margin-top:10px;">
+				  <div class="ui-block-a"><a href="#admin"><img class="img-responsive" src="./img/icon/menu/admin.png" /></a></div>
+				  <div class="ui-block-b"><a href="#academic"><img class="img-responsive" src="./img/icon/menu/academic.png" /></a></div>
+				  <div class="ui-block-c"><a href="http://www.knu.edu.tw/acad/recruit/chinese.htm" target="_blank"><img class="img-responsive" src="./img/icon/menu/recruit.png" /></a></div>
+				  <div class="ui-block-d"><a href="#guide"><img class="img-responsive" src="./img/icon/menu/guide.png" /></a></div>
+				</div>
+				<div class="ui-grid-c" style="margin-top:10px;">
+				  <div class="ui-block-a"><a href="#emergency"><img class="img-responsive" src="./img/icon/menu/emergency.png" /></a></div>
+				  <div class="ui-block-b"><a href="#map"><img class="img-responsive" src="./img/icon/menu/map.png" /></a></div>
+				  <div class="ui-block-c"><a href="#live"><img class="img-responsive" src="./img/icon/menu/live.png" /></a></div>
+				  <div class="ui-block-d"><a href="http://itc.knu.edu.tw/banner/knuform/index.php"><img class="img-responsive" src="./img/icon/menu/survey.png" /></a></div>
+				  
+				  <!--<div class="ui-block-b"><img class="img-responsive" src="./img/icon/menu/movie.png" /></div>-->
+				</div>
+				<div class="ui-grid-c" style="margin-top:10px;">
+					<div class="ui-block-a"><a href="#lost"><img class="img-responsive" src="./img/icon/menu/lost.png" /></a></div>
+					<div class="ui-block-b"><a href="#about"><img class="img-responsive" src="./img/icon/menu/about.png" /></a></div>
+					<div class="ui-block-c"><a href="#shake"><img class="img-responsive" src="./img/lantern_festival/shake.png" /></a></div>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" role="contentinfo" class="ui-footer ui-bar-inherit ui-footer-fixed slideup" style="padding-bottom:0px;background-color:rgba(0,0,0,0);border:0px;">
+			</div>
+		</div>
+		<!--最新消息-->
+		<div data-role="page" id="news" style="min-height:600px;">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>最新消息</h1>
+			</div>
+			<div role="main" class="ui-content" id="news-content">
+				<ul data-role="listview" id="news-list" data-inset="true" data-divider-theme="a">
+				</ul>
+			</div>
+			<!--最新消息 內頁-->
+			<div data-role="popup" id="news-popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="min-width:300px;max-width:100%;">
+				<div data-role="header">
+					<a data-rel="back" data-icon="delete" class="ui-btn-left">返回</a>
+					<h1 id="news-popupDialog-title">詳細訊息</h1>
+				</div>
+				<div role="main" class="ui-content">
+					內容
+				</div>
+			</div>
+		</div>
+		<!--活動演講-->
+		<div data-role="page" id="event" style="min-height:600px;">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>活動演講</h1>
+			</div>
+			<div role="main" class="ui-content" id="event-content">
+			</div>
+			<!--活動演講 內頁-->
+			<div data-role="popup" id="event-popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="min-width:300px;max-width:100%;">
+				<div data-role="header">
+					<a data-rel="back" data-icon="delete" class="ui-btn-left">返回</a>
+					<h1 id="event-popupDialog-title">活動訊息</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<table id="event-popupDialog-table" style="width:100%">
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!--交通資訊-->
+		<div data-role="page" id="traffic" style="">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>交通資訊</h1>
+			</div>
+			<div role="main" class="ui-content" id="traffic-content">
+				<div data-role="tabs" id="traffic-tabs">
+					<div data-role="navbar" class="traffic-navbar" id="traffic-navbar">
+						<ul>
+							<li><a href="#traffic-freeway-1" id="traffic-freeway-1-button" data-icon="custom" class="ui-btn-active">國道１</a></li>
+							<li><a href="#traffic-freeway-3" id="traffic-freeway-3-button" data-icon="custom">國道３</a></li>
+							<!--<li><a href="#traffic-bus" id="traffic-bus-button" data-icon="custom">校園專車</a></li>-->
+						</ul>
+					</div>
+					<div id="traffic-freeway-1" class="ui-body-d ui-content">
+						<div data-role="collapsibleset">
+							<div data-role="collapsible">
+								<h2>國道１北上</h2>
+								<ul data-role="listview">
+									<li>
+										<div style="overflow-x:auto">
+											<img src="./img/traffic/TWHW1_toN.gif" />
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div data-role="collapsible">
+								<h2>國道１南下</h2>
+								<ul data-role="listview">
+									<li>
+										<div style="overflow-x:auto">
+											<img src="./img/traffic/TWHW1_toS.gif" />
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="traffic-freeway-3" class="ui-body-d ui-content">
+						<div data-role="collapsibleset">
+							<div data-role="collapsible">
+								<h2>國道３北上</h2>
+								<ul data-role="listview">
+									<li>
+										<div style="overflow-x:auto">
+											<img src="./img/traffic/TWHW3_toN.gif" />
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div data-role="collapsible">
+								<h2>國道３南下</h2>
+								<ul data-role="listview">
+									<li>
+										<div style="overflow-x:auto">
+											<img src="./img/traffic/TWHW3_toS.gif" />
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+<!--
+					<div id="traffic-bus" class="ui-body-d ui-content">
+						<div>
+							<ul data-role="listview" id="traffic-bus-list" data-inset="true" data-divider-theme="a">
+						</ul>
+						</div>
+					</div>
+-->
+				</div>
+			</div>
+
+		</div>
+
+		<!--行政單位-->
+		<div data-role="page" id="admin">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>行政單位</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" id="admin-list" data-filter="true" data-filter-placeholder="搜尋" data-inset="true" data-divider-theme="a">
+				</ul>
+			</div>
+		</div>
+
+		<!--校園導覽-->
+		<div data-role="page" id="guide">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>校園導覽</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<h3>請左右滑動圖片來瀏覽校園</h3>
+				<div style="overflow-x:auto">
+					<img src="./img/Guide.png" />
+				</div>
+			</div>
+		</div>
+
+		<!--學術單位-->
+		<div data-role="page" id="academic">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>學術單位</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" id="academic-list" data-filter="true" data-filter-placeholder="搜尋" data-inset="true" data-divider-theme="a">
+				</ul>
+			</div>
+		</div>
+
+
+		<!--租屋資訊-->
+		<div data-role="page" id="live" style="min-height:600px;">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>租屋資訊</h1>
+			</div>
+			<div role="main" class="ui-content" id="live-content">
+				<ul data-role="listview" id="live-list" data-inset="true" data-divider-theme="a">
+				</ul>
+			</div>
+		</div>
+
+		<!--失物招領-->
+		<div data-role="page" id="lost" style="min-height:600px;">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>失物招領</h1>
+			</div>
+			<div role="main" class="ui-content" id="lost-content">
+				<ul data-role="listview" id="lost-list" data-inset="true" data-divider-theme="a">
+				</ul>
+			</div>
+		</div>
+
+
+
+		<!--緊急聯絡-->
+		<div data-role="page" id="emergency">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>緊急聯絡</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-icon="phone">
+						<a href="tel:033412500#1672">
+							<img src="./img/emergency/kun_logo.jpg">
+							<h2>校園安全中心</h2>
+							<p>電話：03-3412500轉1672</p>
+						</a>
+					</li>
+					<li data-icon="phone">
+						<a href="tel:033232704">
+							<img src="./img/emergency/police_logo.jpg" width="100%">
+							<h2>大竹派出所</h2>
+							<p>電話：03-323-2704</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<!--開南地圖-->
+		<div data-role="page" id="map">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>開南地圖</h1>
+			</div>
+			<div role="main" class="ui-content" id="map-canvas">
+			</div>
+		</div>
+		<!--關於App-->
+		<div data-role="page" id="about">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>關於App</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						<h2>程式版本</h2>
+					</li>
+					<li>
+						<h2 id="about-version"></h2>
+					</li>
+					<li data-role="list-divider">
+						<h2>計畫指導</h2>
+					</li>
+					<li>
+						<h2>開南大學 資訊科技中心</h2>
+						<p>雲端服務組</p>
+					</li>
+					<li data-role="list-divider">
+						<h2>學生團隊</h2>
+					</li>
+					<li>
+						<h2>資料維護</h2>
+						<p>資訊管理學系 呂蕙如</p>
+					</li>
+					<li>
+						<h2>美術編排</h2>
+						<p>資訊管理學系 郭家延</p>
+					</li>
+					<li>
+						<h2>程式編寫</h2>
+						<p>資訊管理學系 李冠錚</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div data-role="page" id="shake">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>燈會搖一搖</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img id="crown" src="img/lantern_festival/crown.png" class="img-responsive" style="width:19%; position:absolute; left:58%; top:48.5%;" />
+				<div style="position:absolute; color:#FFFF00; text-align:center; width:91%; top:20%; font-size:10vw;" id="shake-count"></div>
+				<div style="position:absolute; color:#FFFF26; text-align:right; width:19%; left:74%; top:51%; font-size:7vw;" id="vote-soc"></div>
+				<div style="position:absolute; color:#FFFF26; text-align:right; width:19%; left:74%; top:60.5%; font-size:7vw;" id="vote-sot"></div>
+				<div style="position:absolute; color:#FFFF26; text-align:right; width:19%; left:74%; top:70%; font-size:7vw;" id="vote-soi"></div>
+				<div style="position:absolute; color:#FFFF26; text-align:right; width:19%; left:74%; top:79.5%; font-size:7vw;" id="vote-sohs"></div>
+				<div style="position:absolute; color:#FFFF26; text-align:right; width:19%; left:74%; top:89%; font-size:7vw;" id="vote-sohm"></div>
+				<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0">
+					<tr><td><img src="img/lantern_festival/top.png" class="img-responsive" /></td></tr>
+					<tr><td><a href="#soc"><img src="img/lantern_festival/soc.png" class="img-responsive" /></a></td></tr>
+					<tr><td><a href="#sot"><img src="img/lantern_festival/sot.png" class="img-responsive" /></a></td></tr>
+					<tr><td><a href="#soi"><img src="img/lantern_festival/soi.png" class="img-responsive" /></a></td></tr>
+					<tr><td><a href="#sohs"><img src="img/lantern_festival/sohs.png" class="img-responsive" /></a></td></tr>
+					<tr><td><a href="#sohm"><img src="img/lantern_festival/sohm.png" class="img-responsive" /></a></td></tr>
+					<tr><td><img src="img/lantern_festival/bot.png" class="img-responsive"  /></td></tr>
+				</table>
+			</div>
+		</div>
+		
+		<div data-role="page" id="soc">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>商學院</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img src="img/lantern_festival/purple.png" class="img-responsive" />
+				<br />
+				<img id="like-soc" src="img/lantern_festival/like.png" class="img-responsive" style="width:40%; margin-left:auto; margin-right:auto;" />
+			</div>
+		</div>
+		
+		<div data-role="page" id="sot">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>觀光運輸學院</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img src="img/lantern_festival/dark_green.png" class="img-responsive" />
+				<br />
+				<img id="like-sot" src="img/lantern_festival/like.png" class="img-responsive" style="width:40%; margin-left:auto; margin-right:auto;" />
+			</div>
+		</div>
+		
+		<div data-role="page" id="soi">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>資訊學院</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img src="img/lantern_festival/blue.png" class="img-responsive" />
+				<br />
+				<img id="like-soi" src="img/lantern_festival/like.png" class="img-responsive" style="width:40%; margin-left:auto; margin-right:auto;" />
+			</div>
+		</div>
+		
+		<div data-role="page" id="sohs">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>人文社會學院</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img src="img/lantern_festival/green.png" class="img-responsive" />
+				<br />
+				<img id="like-sohs" src="img/lantern_festival/like.png" class="img-responsive" style="width:40%; margin-left:auto; margin-right:auto;" />
+			</div>
+		</div>
+		
+		<div data-role="page" id="sohm">
+			<div data-role="header" data-position="fixed" style="overflow:hidden;">
+				<a data-rel="back" data-icon="back" class="ui-btn-left">返回</a>
+				<h1>健康照護管理學院</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<img src="img/lantern_festival/red.png" class="img-responsive" />
+				<br />
+				<img id="like-sohm" src="img/lantern_festival/like.png" class="img-responsive" style="width:40%; margin-left:auto; margin-right:auto;" />
+			</div>
+		</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/slick.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe6Cj4TUpEF8CA0qhPT5lQIpiwC6oxx68"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
